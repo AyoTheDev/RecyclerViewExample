@@ -1,0 +1,34 @@
+/*
+ * Copyright (C) Fluidic Analytics Limited, 2020.
+ * All rights reserved.
+ */
+
+package co.scienta.recyclerview.viewholders
+
+
+import android.view.View
+import androidx.recyclerview.widget.RecyclerView
+import co.scienta.recyclerview.adapters.MainAdapter
+import co.scienta.recyclerview.TypeEightItem
+import co.scienta.recyclerview.R
+import co.scienta.recyclerview.adapters.ItemListListener
+import co.scienta.recyclerview.databinding.Item8ViewBinding
+
+class TypeEightViewHolder(private val binding: Item8ViewBinding, private val listener: ItemListListener)
+    : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
+
+    private val context = binding.root.context
+
+    init {
+        binding.root.setOnClickListener(this)
+    }
+
+    fun bind(item: TypeEightItem) {
+        val text = context.getString(R.string.title)
+        binding.title.text = String.format(text, "\"${item.text}\"")
+    }
+
+    override fun onClick(v: View?) {
+        listener.onClick(adapterPosition)
+    }
+}
